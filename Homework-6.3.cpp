@@ -25,7 +25,7 @@ public:
     }
 
     T& at(int index) {
-        if (index >= size_) {
+        if (index < 0 || index >= size_) {
             throw std::out_of_range("Index out of range");
         }
         return data_[index];
@@ -45,6 +45,21 @@ public:
 
     int capacity() const {
         return capacity_;
+    }
+
+    MyVector& operator=(const MyVector& second_vec) {
+        if (this != &second_vec) {
+            delete[] data_;
+
+            size_ = second_vec.size_;
+            capacity_ = second_vec.capacity_;
+
+            data_ = new T[capacity_];
+            for (size_t i = 0; i < size_; ++i) {
+                data_[i] = second_vec.data_[i];
+            }
+        }
+        return *this;
     }
 };
 
