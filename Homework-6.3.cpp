@@ -48,14 +48,13 @@ public:
     }
 
     MyVector& operator=(const MyVector& second_vec) {
-        if (this != &second_vec) {
+        if (&second_vec != this) {
             delete[] data_;
-
             size_ = second_vec.size_;
             capacity_ = second_vec.capacity_;
 
             data_ = new T[capacity_];
-            for (size_t i = 0; i < size_; ++i) {
+            for (int i = 0; i < size_; i++) {
                 data_[i] = second_vec.data_[i];
             }
         }
