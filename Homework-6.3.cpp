@@ -84,5 +84,10 @@ int main() {
         std::cout << std::endl << "ERROR: " << ex.what() << std::endl;
     }
 
+    //operator=
+    MyVector<int> vec_2 = vec;
+    for (int i = 0; i < vec_2.size(); i++) {
+        std::cout << vec_2.at(i) << " ";
+    }
     return 0;
 }
