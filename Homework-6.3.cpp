@@ -47,15 +47,15 @@ public:
         return capacity_;
     }
 
-    MyVector& operator=(const MyVector& second_vec) {
-        if (&second_vec != this) {
+    MyVector& operator=(const MyVector& created_vec) {
+        if (&created_vec != this) {
             delete[] data_;
-            size_ = second_vec.size_;
-            capacity_ = second_vec.capacity_;
+            size_ = created_vec.size_;
+            capacity_ = created_vec.capacity_;
 
             data_ = new T[capacity_];
             for (int i = 0; i < size_; i++) {
-                data_[i] = second_vec.data_[i];
+                data_[i] = created_vec.data_[i];
             }
         }
         return *this;
@@ -70,7 +70,6 @@ int main() {
     vec.push_back(4);
     vec.push_back(5);
 
-
     std::cout << "Size: " << vec.size() << std::endl;
     std::cout << "Capacity: " << vec.capacity() << std::endl;
 
@@ -84,7 +83,9 @@ int main() {
     }
 
     //operator=
-    MyVector<int> vec_2 = vec;
+    MyVector<int> vec_2;
+    vec_2 = vec;
+    std::cout << "\nvec_2 Elements:";
     for (int i = 0; i < vec_2.size(); i++) {
         std::cout << vec_2.at(i) << " ";
     }
