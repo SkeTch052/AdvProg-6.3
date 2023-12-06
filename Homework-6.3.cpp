@@ -99,7 +99,6 @@ int main() {
     for (int i = 0; i < vec_2.size(); i++) {
         std::cout << vec_2.at(i) << " ";
     }
-
     //copy
     MyVector<int> vec_3(vec);
     std::cout << "\nvec_3 Elements:";
