@@ -20,6 +20,16 @@ private:
 public:
     MyVector() : size_(0), capacity_(0), data_(nullptr) {}
 
+    MyVector(const MyVector& created_vec) {
+        size_ = created_vec.size_;
+        capacity_ = created_vec.capacity_;
+
+        data_ = new T[capacity_];
+        for (int i = 0; i < size_; i++) {
+            data_[i] = created_vec.data_[i];
+        }
+    }
+
     ~MyVector() {
         delete[] data_;
     }
@@ -86,6 +96,13 @@ int main() {
     MyVector<int> vec_2;
     vec_2 = vec;
     std::cout << "\nvec_2 Elements:";
+    for (int i = 0; i < vec_2.size(); i++) {
+        std::cout << vec_2.at(i) << " ";
+    }
+
+    //copy
+    MyVector<int> vec_3(vec);
+    std::cout << "\nvec_3 Elements:";
     for (int i = 0; i < vec_2.size(); i++) {
         std::cout << vec_2.at(i) << " ";
     }
